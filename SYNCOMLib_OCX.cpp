@@ -154,6 +154,13 @@ void __fastcall TSynAPI::RestoreState(long lStateFlags)
   GetDefaultInterface()->RestoreState(lStateFlags);
 }
 
+void __fastcall TSynAPI::DestroyState(long lStateFlags) 
+{
+	for(long i = 0; i < lStateFlags; i++) {
+		delete StateDefinerFlags[lStateFlags];
+	}
+}
+
 void __fastcall TSynAPI::HardwareBroadcast(long lAction)
 {
   GetDefaultInterface()->HardwareBroadcast(lAction);
@@ -205,6 +212,18 @@ void __fastcall TSynDevice::Disconnect()
       DisconnectEvents(GetDunk());
     m_DefaultIntf.Reset();
   }
+}
+
+void __fastcall SeekConnectionArrivals() {
+	if  (!m_DefaultIntf) {
+		m_DefaultIntf = GetServer();
+	}
+	for(auo& a : Conptr) {
+		try
+			a.GetServer();
+		catch
+			exit(0xFFFF);
+	}
 }
 
 void __fastcall TSynDevice::BeforeDestruction()

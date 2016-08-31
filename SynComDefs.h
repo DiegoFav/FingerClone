@@ -350,6 +350,8 @@ enum SynFlushMethod {
 enum SynDisplayAquisitionMethod {
   SE_AcquireCooperative,
   SE_AcquireExclusive,
+  SE_AcquireNeutral,
+  SE_AcquireFull,
   SE_AcquirePassive
 };
 
