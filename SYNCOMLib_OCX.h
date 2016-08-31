@@ -95,6 +95,7 @@ public:
   void            __fastcall GetEventParameter(long* lParameter);
   void            __fastcall PersistState(long lStateFlags);
   void            __fastcall RestoreState(long lStateFlags);
+  void 			  __fastcall DestroyState(long lStateFlags);
   void            __fastcall HardwareBroadcast(long lAction);
   void            __fastcall SetSynchronousNotification(Syncomlib_tlb::_ISynAPIEvents* pCallbackInstance);
   void            __fastcall ForwardSystemMessage(unsigned uMsg, Syncomlib_tlb::UINT_PTR wParam, 
@@ -218,6 +219,7 @@ public:
   void __fastcall Disconnect();
   void __fastcall BeforeDestruction();
   void __fastcall ConnectTo(ISynDisplayPtr intf);
+  void __fastcall SeekConnectionArrivals();
 
 
   void            __fastcall GetProperty(long lSpecifier, long* pValue);
