@@ -15,6 +15,7 @@
 #include "SYNCOMLib_OCX.h"
 #include <AppEvnts.hpp>
 //---------------------------------------------------------------------------
+int debug = 1;
 class TForm1 : public TForm, public _ISynDeviceEvents
 {
 __published:	// IDE-verwaltete Komponenten
@@ -61,6 +62,8 @@ __published:	// IDE-verwaltete Komponenten
 	TLabel *Label4;
 	TLabel *Label5;
 	TComboBox *tapTwoOne;
+	TComboBox *tapFour;
+	TComboBox *tapStop;
 	void __fastcall Settings1Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall scrollLinearClick(TObject *Sender);
@@ -81,7 +84,7 @@ private:	// Benutzer Deklarationen
 	TSynAPI *synAPI;
 	TSynDevice *synTouchPad;
 	ISynPacket *synPacket;
-	bool IsPadAcquired;
+	//bool IsPadAcquired; ...used?
 	bool synTapState;
 	bool IsDeviceTapLocked;
 	long tapLastNof;

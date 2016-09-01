@@ -299,6 +299,8 @@ void __fastcall TForm1::SettingsSave()
 	settings->WriteInteger("tapTwo", tapTwo->ItemIndex);
 	settings->WriteInteger("tapTwoOne", tapTwoOne->ItemIndex);
 	settings->WriteInteger("tapThree", tapThree->ItemIndex);
+	settings->WriteInteger("tapFour", tapFour->ItemIndex);
+	settings->WriteInteger("tapStop", tapStop->ItemIndex);
 	settings->WriteInteger("tapMaxDistance", tapMaxDistance->Position);
 
 	settings->CloseKey();
@@ -433,12 +435,16 @@ HRESULT STDMETHODCALLTYPE TForm1::OnSynDevicePacket(long seqNum)
 					ok = DoTap(tapTwo->ItemIndex);
 				else if (tapLastNof == 3)
 					ok = DoTap(tapThree->ItemIndex);
+				else 
+					ok = DoTap(tapStop->ItemIndex);
 			}
 			else if (tstamp - tapStartTime < 175) {
 				if (tapLastNof == 2)
 					ok = DoTap(tapOneOne->ItemIndex);
 				else if (tapLastNof == 3)
 					ok = DoTap(tapTwoOne->ItemIndex);
+				else 
+					ok = DoTap(tapStop->ItemIndex);
 			}
 			if (ok)
 				SetCursorPos(tapTouchPos.x, tapTouchPos.y);

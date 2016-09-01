@@ -511,6 +511,7 @@ class TCOMISynDisplayT : public TComInterface<ISynDisplay>, public TComInterface
 {
 public:
   TCOMISynDisplayT() {}
+  ~TCOMISynDisplayT() {Unacquire();}	//Destructor
   TCOMISynDisplayT(ISynDisplay *intf, bool addRef = false) : TComInterface<ISynDisplay>(intf, addRef) {}
   TCOMISynDisplayT(const TCOMISynDisplayT& src) : TComInterface<ISynDisplay>(src) {}
   TCOMISynDisplayT& operator=(const TCOMISynDisplayT& src) { Bind(src, true); return *this;}
